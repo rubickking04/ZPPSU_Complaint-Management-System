@@ -113,7 +113,7 @@
                                                                 <td class="text-center" scope="row">{{ $complains->created_at->toDayDateTimeString() }}</td>
                                                                 <td class="text-center" scope="row">
                                                                     <button type="button" class=" btn btn-success bi bi-eye-fill" data-bs-toggle="modal"data-bs-target="#exampleModalCenter{{ $complains->id }}"></button>
-                                                                    <button type="button" class=" btn btn-warning bi bi-pencil-square"data-bs-toggle="modal"data-bs-target="#exampleModalCenters{{ $complains->id }}"></button>
+                                                                    {{-- <button type="button" class=" btn btn-warning bi bi-pencil-square"data-bs-toggle="modal"data-bs-target="#exampleModalCenters{{ $complains->id }}"></button> --}}
                                                                     <a href="{{ route('admin.complains.destroy', $complains->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure to remove this complain?')">
                                                                         <i class="bi bi-trash"></i>
                                                                     </a>
@@ -143,7 +143,7 @@
                                                                                                     </div>
                                                                                                 </div>
                                                                                                 <div class="form-outline text-start col-xl-6">
-                                                                                                    <label for="incident_date" class="col-form-label">{{ __('Complainant\'s name: ') }}</label>
+                                                                                                    <label for="incident_date" class="col-form-label">{{ __('Complainant Date: ') }}</label>
                                                                                                     <div class="input-group">
                                                                                                         <input type="text" id="incident_date" placeholder="Example: rubickking04@gmail.com" name="incident_date" class="form-control form-control-lg @error('incident_date') is-invalid @enderror"  value="{{ $complains->created_at->toDayDateTimeString() }}" readonly/>
                                                                                                         @error('incident_date')
@@ -167,7 +167,7 @@
                                                                                                 <div class="form-outline text-start col-xl-6">
                                                                                                     <label for="incident_date" class="col-form-label">{{ __('Student ID: ') }}</label>
                                                                                                     <div class="input-group">
-                                                                                                        <input type="text" id="incident_date" placeholder="Example: rubickking04@gmail.com" name="incident_date" class="form-control form-control-lg @error('incident_date') is-invalid @enderror"  value="{{ $complains->user->profile_info->student_id }}" readonly/>
+                                                                                                        <input type="text" id="incident_date" placeholder="N/A" name="incident_date" class="form-control form-control-lg @error('incident_date') is-invalid @enderror"  value="{{ optional($complains->user->profile_info)->student_id }}" readonly/>
                                                                                                         @error('incident_date')
                                                                                                             <span class="invalid-feedback" role="alert">
                                                                                                                 <strong>{{ $message }}</strong>
@@ -282,7 +282,11 @@
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="form-outline text-start mt-2">
-                                                                                                <label for="file" class="col-form-label fw-bold">{{ __('Attachments: ') }}</label>
+                                                                                                <label for="file" class="col-form-label fw-bold">{{ __('Attachment(s): ') }}</label>
+                                                                                                <div class="card" style="width: 18rem;">
+                                                                                                    <img src="{{ asset('/storage/files/tmp/'.$complains->file) }}" alt="avatar" class="card-img-top mb-3">
+                                                                                                </div>
+                                                                                                {{-- <img src="{{ asset('/storage/files/tmp/'.$complains->file) }}" alt="avatar" class=" mb-3" height="100px" width="100px"> --}}
                                                                                                 {{-- <input type="file" id="file" placeholder="Enter the place" name="file" class="form-control form-control-lg @error('file') is-invalid @enderror"  value="{{ old('file') }}"/> --}}
                                                                                                 @error('file')
                                                                                                     <span class="invalid-feedback" role="alert">
@@ -448,42 +452,6 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    {{-- Update Profile Modal --}}
-                                                                    <div class="modal fade modal-alert" id="exampleModalCenters{{ $complains->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                        <div class="modal-dialog ">
-                                                                            <div class="modal-content shadow" style="border-radius:20px; ">
-                                                                                <div class="modal-header flex-nowrap border-bottom-0">
-                                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">{{ __('New message to ') }} <span class="fw-bold">{{ $complains->name }}</span></h1>
-                                                                                    <button type="button" class="btn-close"data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                                </div>
-                                                                                <div class="modal-body text-start">
-                                                                                    {{-- <div class="thumb-lg member-thumb ms-auto">
-                                                                                        <img src="{{ asset('/storage/images/avatar.png')}}" class="border border-info border-5 rounded-circle img-thumbnail" alt="" height="100px" width="100px">
-                                                                                    </div>
-                                                                                    <h2 class="fw-bold mb-0">{{ $complains->name }}</h2> --}}
-                                                                                    <form action="{{ route('admin.message') }}" method="POST">
-                                                                                        @csrf
-                                                                                        <div class="row mb-3">
-                                                                                            <input type="hidden" name="user_id" value="{{ $complains->user->id }}">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="body" class="col-form-label">Message:</label>
-                                                                                                <textarea class="form-control" id="body" rows="3" name="body" placeholder="{{ __('Write a message to '. $complains->name) }}"></textarea>
-                                                                                                @error('body')
-                                                                                                    <span class="invalid-feedback" role="alert">
-                                                                                                        <strong>{{ $message }}</strong>
-                                                                                                    </span>
-                                                                                                @enderror
-                                                                                            </div>
-                                                                                        </div>
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                                    <button type="submit" class="btn btn-primary">Send message</button>
-                                                                                    </form>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
                                                                 </td>
                                                             </tr>
                                                         @endforeach
@@ -500,7 +468,7 @@
                                         </div>
                                         <div class="card-body">
                                             <h5 class="card-title fs-3 text-center">
-                                                {{ __('No Farmers Joined yet.') }}</h5>
+                                                {{ __('No Complains created yet.') }}</h5>
                                         </div>
                                     </div>
                                 </div>

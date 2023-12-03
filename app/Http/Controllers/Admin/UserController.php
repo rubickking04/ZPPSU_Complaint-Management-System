@@ -13,8 +13,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::latest()->paginate(10);
+        $user = User::with('profile_info')->latest()->paginate(10);
         return view('admin.user', compact('user'));
+        // dd($user);
     }
 
     /**

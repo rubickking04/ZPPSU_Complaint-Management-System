@@ -107,12 +107,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.messages') }}" class="nav-link text-truncate">
-                            <i class="fs-4 text-white mdi mdi-forum-outline"></i>
-                            <span class="text-white px-2 py-5" aria-current="page">{{ __('Chats') }}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a href="{{ route('admin.user') }}" class="nav-link text-truncate">
                             <i class="fs-4 text-white mdi mdi-account-group-outline"></i>
                             <span class="text-white px-2 py-5" aria-current="page">{{ __('Users') }}</span>

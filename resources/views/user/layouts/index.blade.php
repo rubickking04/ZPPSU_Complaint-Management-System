@@ -108,12 +108,6 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('user.messages') }}" class="nav-link text-truncate">
-                            <i class="fs-4 text-white mdi mdi-forum-outline"></i>
-                            <span class="text-white px-2 py-5" aria-current="page">{{ __('Chats') }}</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a href="{{ route('user.complain') }}" class="nav-link text-truncate">
                             <i class="fs-4 text-white mdi mdi-history"></i>
                             <span class="text-white px-2 py-5" aria-current="page">{{ __('History') }}</span>
@@ -156,9 +150,10 @@
     </div>
     <script src="https://cdn.lordicon.com/lusqsztk.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
     <script>
-        FilePond.registerPlugin(FilePondPluginImagePreview);
+        FilePond.registerPlugin(FilePondPluginImagePreview, FilePondPluginFileValidateType);
         // Get a reference to the file input element
         const inputElement = document.querySelector('input[type="file"]');
 

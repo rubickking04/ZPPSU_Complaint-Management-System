@@ -109,7 +109,7 @@
                             </div>
                             <div class="form-outline text-start mt-2">
                                 <label for="file" class="col-form-label fw-bold">{{ __('Attachments: ') }}</label>
-                                <input type="file" id="file" placeholder="Enter the place" name="file" class="form-control form-control-lg @error('file') is-invalid @enderror"  value="{{ old('file') }}"/>
+                                <input type="file" id="file" placeholder="Enter the place" name="file" accepted-file-types="image/jpeg, image/png" class="form-control form-control-lg @error('file') is-invalid @enderror"  value="{{ old('file') }}"/>
                                 @error('file')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

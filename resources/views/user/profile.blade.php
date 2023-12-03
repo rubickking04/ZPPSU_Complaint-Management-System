@@ -148,7 +148,7 @@
                             @else
                                 <button type="button" class="btn btn-primary text-white"  data-bs-toggle="modal" data-bs-target="#exampleModalCenters">{{ __('Add Personal Information') }}</button>
                             @endif
-                            <button type="button" class="btn btn-outline-primary"  data-bs-toggle="modal" data-bs-target="#exampleModalCenter">{{ __('Edit Profile') }}</button>
+                            {{-- <button type="button" class="btn btn-outline-primary"  data-bs-toggle="modal" data-bs-target="#exampleModalCenter">{{ __('Edit Profile') }}</button> --}}
                         </div>
                         {{-- @if(Auth::user()->profile_info)
                         <div class="modal fade" id="editModalCenters" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

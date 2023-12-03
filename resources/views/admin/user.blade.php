@@ -98,12 +98,12 @@
                                                                 </td>
                                                                 <td class="text-center fw-bold h6 py-3 text-truncate" scope="row">{{ $users->name }}</td>
                                                                 <td class="text-center" scope="row"> {{ $users->email }}</td>
-                                                                <td class="text-center" scope="row"> {{ $users->address }}</td>
-                                                                <td class="text-center" scope="row"> {{ $users->phone_number }}</td>
+                                                                <td class="text-center" scope="row"> {{ optional($users->profile_info)->address }}</td>
+                                                                <td class="text-center" scope="row"> {{ optional($users->profile_info)->phone_number }}</td>
                                                                 <td class="text-center" scope="row">{{ \Carbon\Carbon::createFromTimestamp(strtotime($users->created_at))->Format('d/m/Y') }}</td>
                                                                 <td class="text-center" scope="row">
                                                                     <button type="button" class=" btn btn-success bi bi-eye-fill" data-bs-toggle="modal"data-bs-target="#exampleModalCenter{{ $users->id }}"></button>
-                                                                    <button type="button" class=" btn btn-warning bi bi-pencil-square"data-bs-toggle="modal"data-bs-target="#exampleModalCenters{{ $users->id }}"></button>
+                                                                    {{-- <button type="button" class=" btn btn-warning bi bi-pencil-square"data-bs-toggle="modal"data-bs-target="#exampleModalCenters{{ $users->id }}"></button> --}}
                                                                     <a href="{{ route('admin.users.delete', $users->id) }}" class="btn btn-danger" onclick="return confirm('Are you sure to remove this user?')">
                                                                         <i class="bi bi-trash"></i>
                                                                     </a>

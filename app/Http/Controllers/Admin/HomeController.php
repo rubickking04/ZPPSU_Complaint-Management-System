@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Complain;
+use App\Charts\DataChart;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
 {
@@ -12,7 +15,34 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $user = User::latest()->take(9)->get();
+        $total_users = User::get()->count();
+        $total_requests = Complain::get()->count();
+        $total_approved = Complain::onlyTrashed()->count();
+        $chart = new DataChart;
+        $chart->labels([
+            'Students',
+            'Requests',
+            'Approved',
+        ]);
+        $chart->dataset('Systems Data Chart', 'doughnut',[
+            $total_users,
+            $total_requests,
+            $total_approved,
+        ])->color(collect(
+            [
+                'rgba(54, 162, 235)',
+                'rgba(255, 159, 64)',
+                'rgba(75, 192, 192)',
+            ]
+        ))->backgroundColor(collect(
+            [
+                'rgba(54, 162, 235)',
+                'rgba(255, 159, 64)',
+                'rgba(75, 192, 192)',
+            ]
+        ));
+        return view('admin.home',compact('total_users', 'total_requests', 'total_approved', 'chart','user'));
     }
 
     /**
