@@ -137,6 +137,7 @@
     </div>
     <script src="https://cdn.lordicon.com/lusqsztk.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
     <script>
         FilePond.registerPlugin(FilePondPluginImagePreview);
