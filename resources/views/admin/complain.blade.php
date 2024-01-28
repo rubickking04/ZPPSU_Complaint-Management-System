@@ -220,7 +220,7 @@
                                                                                             <div class="form-outline text-start mt-2">
                                                                                                 <label for="incident_event" class="col-form-label">{{ __('What, if any, precursor behaviors were exhibited prior to the culminating event?') }}</label>
                                                                                                 <div class="input-group">
-                                                                                                    <textarea type="text" id="incident_event" placeholder="Enter the place" readonly name="incident_event" rows=3 class="form-control form-control-lg @error('incident_event') is-invalid @enderror"  value="{{ old('incident_event') }}">{{ $complains->incident_place }}</textarea>
+                                                                                                    <textarea type="text" id="incident_event" placeholder="Enter the place" readonly name="incident_event" rows=3 class="form-control form-control-lg @error('incident_event') is-invalid @enderror"  value="{{ old('incident_event') }}">{{ $complains->incident_event }}</textarea>
                                                                                                     @error('incident_event')
                                                                                                         <span class="invalid-feedback" role="alert">
                                                                                                             <strong>{{ $message }}</strong>

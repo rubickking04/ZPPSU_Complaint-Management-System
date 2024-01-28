@@ -47,6 +47,7 @@ class ComplainController extends Controller
             'file' =>$request->input('file'),
             'detail' => $request->input('detail'),
         ]);
+        // dd($complain);
         return redirect()->route('user.complain');
     }
 

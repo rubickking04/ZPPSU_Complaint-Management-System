@@ -17,7 +17,7 @@
                     <div class="alert alert-secondary" role="alert">
                         <p class="fst-italic">{{ __('The Standards of conduct applies, and discipline may be imposed for conduct which occurs on College Premises, at off campus recreational or instructional sites, at my College-sponsored event, or at any College supervised or privded activity, transportation or facility.') }}</p>
                     </div>
-                    <form action="{{ route('user.complain.create') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('user.complain.create') }}" method="POST">
                         @csrf
                         <div class="row mb-3">
                             <div class="form-outline text-start col-xl-6">
